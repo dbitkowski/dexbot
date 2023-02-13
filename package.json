@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "bot": "node index.js",
+    "bot:test": "cross-env NODE_ENV=test node index.js",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --fix --ext .js",
     "test": "mocha './test/**/*.test.js'"
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "chai": "^4.3.7",
+    "cross-env": "^7.0.3",
     "eslint": "^8.32.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",

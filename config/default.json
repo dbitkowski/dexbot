@@ -5,9 +5,16 @@
       "lightApiRoot": "https://lightapi.eosamsterdam.net/api"
     },
     "cancelOpenOrdersOnExit": false,
+    "riskstrategy": {
+      "symbol": "XPR_XUSDC",
+      "riskManagementFactor": 0.05,
+      "minimumTradingVolumePercentage": 0.2,
+      "maximumVolatility": 0.5,
+      "historicalDataCount": 100
+    },
     "marketmaker": {
       "minSpread": 0.001,
-      "numPairs": 5,
+      "numPairs": 1,
       "symbol": "XPR_XUSDC"
     },
     "rpc": {
@@ -15,10 +22,10 @@
         "https://proton.greymass.com",
         "https://proton.eoscafeblock.com"
       ],
-      "privateKey": "PVT_K1_7yLfEMQXtFmCA3beLg6PSyiSp8paRBK2rdpLZ791XNAvRggXu",
-      "privateKeyPermission": "active"
+      "privateKey": "PVT_K1_T6CGEs63xsNhVMRSsnADdXtLpPbwjDKoH5p75u9ND1i4HjaYi",
+      "privateKeyPermission": "owner"
     },
     "tradeIntervalMS": "10000",
-    "username": "user1"
+    "username": "graum"
   }
 }

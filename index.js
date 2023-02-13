@@ -1,7 +1,7 @@
 import { getConfig, getLogger } from './utils.js';
 import * as dexapi from './dexapi.js';
 import * as dexrpc from './dexrpc.js';
-import strategy from './strategies/marketmaker.js';
+import strategy from './strategies/riskstrategy.js';
 
 /**
  * This is where we call the trading strategy.

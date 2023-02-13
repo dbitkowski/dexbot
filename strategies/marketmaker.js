@@ -14,8 +14,13 @@ const getMarketDetails = async () => {
   const market = dexapi.getMarketBySymbol(symbol);
   const price = await dexapi.fetchLatestPrice(symbol);
   const orderBook = await dexapi.fetchOrderBook(symbol, 1);
+  const orderBooks = await dexapi.fetchOrderBook(symbol, 100);
+  const trades = await dexapi.fetchTrades(symbol, 100);
+  const balances = await dexapi.fetchBalances(username);
   const lowestAsk = orderBook.asks.length > 0 ? orderBook.asks[0].level : price;
   const highestBid = orderBook.bids.length > 0 ? orderBook.bids[0].level : price;
+
+  console.log("Balances", balances);
 
   const details = {
     highestBid,
@@ -65,6 +70,9 @@ const createBuyOrder = (marketDetails, index) => {
   const bigMinSpread = new BN(minSpread);
   const minOrder = market.order_min / market.ask_token.multiplier;
 
+  console.log("Creating Buy Order");
+  console.log("Market Details", marketDetails);
+
   const lastSalePrice = new BN(marketDetails.price);
   const lowestAsk = new BN(marketDetails.lowestAsk);
   const highestBid = new BN(marketDetails.highestBid);
@@ -85,6 +93,9 @@ const createBuyOrder = (marketDetails, index) => {
     quantity: adjustedTotal,
     symbol,
   };
+
+  console.log("Order", order);
+  
   return order;
 };
 
@@ -94,6 +105,9 @@ const createSellOrder = (marketDetails, index) => {
   const bidPrecision = market.bid_token.precision;
   const bigMinSpread = new BN(minSpread);
   const minOrder = market.order_min / market.ask_token.multiplier;
+
+  console.log("Creating Sell Order");
+  console.log("Market Details", marketDetails);
 
   const lastSalePrice = new BN(marketDetails.price);
   const lowestAsk = new BN(marketDetails.lowestAsk);
@@ -115,6 +129,8 @@ const createSellOrder = (marketDetails, index) => {
     quantity,
     symbol,
   };
+
+  console.log("Order", order);
 
   return order;
 };
