@@ -25,7 +25,7 @@ export PROTON_PRIVATE_KEY=PVT_K1_7yLfEMQXtFmCA3beLg6PSyiSp8paRBK2rdpLZ791XNAvRgg
 ```
 1. edit config/default.json to use the market you would like to trade in (symbol value)
 1. `npm run bot`
-1. To run on testnet: `NODE_ENV=test npm run bot`
+1. To run on testnet: `npm run bot:test`
 
 ## config params
 config/default.json has other config values you can change
@@ -54,7 +54,13 @@ config/default.json has other config values you can change
       // market to trade in
       "symbol": "XPR_XUSDC"
     },
-
+    "riskstrategy": {
+      "symbol": "XPR_XUSDC",
+      "riskManagementFactor": 0.05,
+      "minimumTradingVolumePercentage": 0.2,
+      "maximumVolatility": 0.5,
+      "historicalDataCount": 100
+    },
 
     "rpc": {
 
@@ -79,6 +85,9 @@ config/default.json has other config values you can change
   }
 }
 ```
+
+## Strategy
+- **riskstrategy** - Modified strategy that uses a Reversion to the Mean algorithm to determine ideal price point and when to buy or sell.  Risk management represents the level of risk that a trader or an investor is willing to take on in a trade. It is a percentage value that determines the maximum amount of capital that an investor is willing to risk in a single trade.  Limits are placed on this for maximum volatility of the market as well as minimum trading volumn.  These values can be changed in the configuration.
 
 ## Actions available in this bot code base
 
